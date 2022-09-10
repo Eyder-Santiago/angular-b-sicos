@@ -8,7 +8,7 @@
       <input type="text" name="apellido" id="apellido" placeholder="Apellido" class="form-control" #apellidoInput> <!--local reference, solo podemos enviar información de nuestra plantilla hacia nuestro componente #apellidoInput-->
     </div>
     <div class="col">
-      <button type="submit" class="btn btn-primary" (click)="agregarPersona(nombreInput, apellidoInput)"> <!--aquí pasamos la referencia de #nombreinput y #apellidoInput como parámetro a la función agregarPersona()-->
+      <button type="submit" class="btn btn-primary" (click)="agregarPersona()"> <!--clase 43, pasar sin parámetros usando localReference, se usará viewchild-->
         Agregar
       </button>
     </div>
