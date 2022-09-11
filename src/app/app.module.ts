@@ -6,7 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PersonaComponent } from './persona/persona.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { LoggingServices } from './loggingServices';
+import { LoggingService } from './loggingService.service';
+import { PersonasService } from './personas.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { LoggingServices } from './loggingServices';
     AppRoutingModule,
     FormsModule //agregar luego de poner los scripts de bootstrap
   ],
-  providers: [LoggingServices],  //proveedor global
+  providers: [LoggingService, PersonasService],  //proveedor global
   bootstrap: [AppComponent]
 })
 export class AppModule { }

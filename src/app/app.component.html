@@ -5,9 +5,7 @@
   </div>
   <hr/> <!--Línea horizontal-->
   <!--El método que se monitorea es el método personaCreada.emit(persona1), esto es dos líneas abajo-->
-  <app-formulario
-  (personaCreada)="personaAgregada($event)"
-  >
+  <app-formulario> <!--Clase 45 se borra (personaCreada)="personaAgregada($event)"", pues no se necesitará escucharlo, porque se utilizará es un servicio y no se está emitiendo ningún evento desde el componente hijo de app formulario-->
 
   </app-formulario><!-- Pasando elementos a componente hijo formulario.component.html-->
   <hr/> 
