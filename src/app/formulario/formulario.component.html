@@ -1,15 +1,7 @@
-<form class="row"> <!--form-row, from bootstrap, agrega elementos de manera horizontal--> <!--col-md-2, significa que iusaremos 2 columnas-->
-    <div class="mb-3 col-md-2"> <!--mb-3 reemplaza a form-group-->
-      <label for="nombre" class="visually-hidden">Nombre</label> <!--nombreInput, se creará en component.ts, label no se visualizará por visually-hidden from bootstrap-->
-      <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" #nombreInput> <!--se quita two way bidding en clase 42 y se utliza local reference....... two way bidding podemos modificar la información del lado del componente y esta información se refleje en la plantilla y se refleje en el componente-->
-    </div>
-    <div class="mb-3 col-md-2">
-      <label for="apellido" class="visually-hidden">Apellido</label> <!--nombreInput, se creará en component.ts, label no se visualizará por visually-hidden from bootstrap-->
-      <input type="text" name="apellido" id="apellido" placeholder="Apellido" class="form-control" #apellidoInput> <!--local reference, solo podemos enviar información de nuestra plantilla hacia nuestro componente #apellidoInput-->
-    </div>
-    <div class="col">
-      <button type="submit" class="btn btn-primary" (click)="agregarPersona()"> <!--clase 43, pasar sin parámetros usando localReference, se usará viewchild-->
-        Agregar
+<form class="item"> <!--form-row, from bootstrap, agrega elementos de manera horizontal--> <!--col-md-2, significa que iusaremos 2 columnas-->
+      <input type="text" name="nombre" id="nombre" placeholder="Nombre" [(ngModel)]="nombreInput"> <!--clase 48 nuevamente se usa two way bidding-->
+      <input type="text" name="apellido" id="apellido" placeholder="Apellido" [(ngModel)]="apellidoInput"> <!--local reference, solo podemos enviar información de nuestra plantilla hacia nuestro componente #apellidoInput-->
+      <button type="submit" (click)="agregarPersona()"> <!--clase 43, pasar sin parámetros usando localReference, se usará viewchild-->
+       +
       </button>
-    </div>
 </form>
