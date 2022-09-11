@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { LoggingService } from "./loggingService.service";
 import { Persona } from "./persona.model";
 
@@ -12,6 +12,8 @@ export class PersonasService{
       new Persona('Laura', 'Juarez'),
       new Persona('Karla', 'Lara')
     ];  
+
+    saludar = new EventEmitter<number>(); //Emitiendo la variable Saludar
 
     constructor(private loggingService: LoggingService){
   
