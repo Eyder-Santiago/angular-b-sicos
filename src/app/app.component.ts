@@ -1,5 +1,6 @@
 
 import { Component } from '@angular/core';
+import { LoggingServices } from './loggingServices';
 import { Persona } from './persona.model';
 
 @Component({
@@ -17,8 +18,14 @@ export class AppComponent {
     new Persona('Karla', 'Lara')
   ];  
 
+  //servicio LoggingServices
+  constructor(private loggingService: LoggingServices){
+
+  }
+
   personaAgregada(persona: Persona){ //recibimos el onjeto de tipo Persona desde el componente hijo llamado formulario this.personaCreada.emit(persona1), desde la función agregarPersona()
     //usamos el arreglo tipo Persona y agregamos el objeto que viene desde el componente hijo.
+    this.loggingService.enviaMensajeAConsola("agregamos al arreglo la nueva persona:" + persona.nombre);
     this.personas.push(persona);
   }
 
