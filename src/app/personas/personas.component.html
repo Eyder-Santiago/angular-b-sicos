@@ -1,0 +1,16 @@
+
+<div class="box">
+    <!--iteramos cada uno de los objetos de tipo Persona--><!--Usaremos property biding-->
+    <app-persona *ngFor="let personaElemento of personas; let i = index"   
+    [persona] = "personaElemento" 
+    [indice] = "i">
+    </app-persona><!--[persona] Pasando elementos a componente hijo persona.component.html-->
+  </div>
+  <div class="box">
+    <!--El método que se monitorea es el método personaCreada.emit(persona1), esto es dos líneas abajo-->
+    <app-formulario></app-formulario><!-- Pasando elementos a componente hijo formulario.component.html-->
+  </div>
+  
+  
+  <!--Se movió Componente hijo-->
+  

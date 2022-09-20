@@ -1,7 +1,7 @@
-import { Component, ElementRef, ViewChild } from '@angular/core'; //clase 45 se eleimina Output y EventEmitter pues no se van a utilizar porque se usará un servicio
-import { LoggingService } from '../loggingService.service'; //lo añade automáticamente ángular usando dependency injection, ya se importó globalmente en app.module.ts, no hay necesidad de importarlo por clase
-import { Persona } from '../persona.model'; //importamos clase Persona
-import { PersonasService } from '../personas.service';
+import { Component } from '@angular/core'; //clase 45 se eleimina Output y EventEmitter pues no se van a utilizar porque se usará un servicio
+import { LoggingService } from '../../loggingService.service'; //lo añade automáticamente ángular usando dependency injection, ya se importó globalmente en app.module.ts, no hay necesidad de importarlo por clase
+import { Persona } from '../../persona.model'; //importamos clase Persona
+import { PersonasService } from '../../personas.service';
 
 @Component({
   selector: 'app-formulario',
