@@ -1,4 +1,6 @@
-
+<div style="text-align: center;">
+  <button style="cursor: pointer" (click)="agregar()">+</button> <!--pointer hace que se vea el cursor cuando nos posicionamos en el botón-->
+</div>
 <div class="box">
     <!--iteramos cada uno de los objetos de tipo Persona--><!--Usaremos property biding-->
     <app-persona *ngFor="let personaElemento of personas; let i = index"   

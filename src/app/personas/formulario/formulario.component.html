@@ -1,7 +1,8 @@
-<form class="item"> <!--form-row, from bootstrap, agrega elementos de manera horizontal--> <!--col-md-2, significa que iusaremos 2 columnas-->
-      <input type="text" name="nombre" id="nombre" placeholder="Nombre" [(ngModel)]="nombreInput"> <!--clase 48 nuevamente se usa two way bidding-->
-      <input type="text" name="apellido" id="apellido" placeholder="Apellido" [(ngModel)]="apellidoInput"> <!--local reference, solo podemos enviar información de nuestra plantilla hacia nuestro componente #apellidoInput-->
-      <button type="submit" (click)="agregarPersona()"> <!--clase 43, pasar sin parámetros usando localReference, se usará viewchild-->
-       +
-      </button>
-</form>
+<!--se corrigen los estilos en personas/agregar-->
+<div class="box">
+      <form class="item" #f="ngForm"(ngSubmit)="f.form.valid && onGuardarPersona()"> <!--campos obligatorios (validaciones) se usará local reference clase 65-->
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre" [(ngModel)]="nombreInput" required> <!--clase 48 nuevamente se usa two way bidding-->
+            <input type="text" name="apellido" id="apellido" placeholder="Apellido" [(ngModel)]="apellidoInput" required> <!--local reference, solo podemos enviar información de nuestra plantilla hacia nuestro componente #apellidoInput-->
+            <button type="submit" style="cursor: pointer;"> +</button> <!--clase 43, pasar sin parámetros usando localReference, se usará viewchild-->
+      </form>
+</div>
