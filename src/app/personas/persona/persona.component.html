@@ -1,5 +1,10 @@
     <!--usamos directiva *ngFor, para iterar cada uno de los objetos de tipo Persona--> 
     <div class="item">  <!--en ngFor, let persona va a almacenar cada uno de los objetos de tipo Persona que contiene el arreglo de Persona, let i persona será el contador-->
-      <input type="checkbox" class="btn btn-info" (click)="emitirSaludo()">
-      <p>{{indice+1}}: {{persona.nombre}} {{persona.apellido}}</p> <!--ver persona.component.ts-->
+      <ul><!--se hará un link por cada uno de los elementos a mostrar con la ruta 'personas/:id' de app-routing y al dar clic se carga el componente formulario para editar ese usuario-->
+        <li>
+          <a [routerLink]="['/personas', indice]">
+            {{persona.nombre}} {{persona.apellido}} <!--ver persona.component.ts-->
+          </a>
+        </li>        
+      </ul>      
     </div>              

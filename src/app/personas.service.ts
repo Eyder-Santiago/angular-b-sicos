@@ -30,6 +30,16 @@ export class PersonasService{
       this.loggingService.enviaMensajeAConsola("agregamos al arreglo la nueva persona:" + persona.nombre);
         this.personas.push(persona);
       }
+    encontrarPersona(index : number){ //declaramos una variable, y con ayuda cdel arreglo personas, proporcionamos el indice que estamos recibiendo y nos va a regresar el objeto persona que se encuentra agregado en este índice y regresamos el objeto persona que hemos encontrado con el return
+      let persona: Persona = this.personas[index];
+      return persona;
+    }
+
+    modificarPersona(index : number, persona:Persona){
+      let persona1 = this.personas[index]; //regresando el objeto persona que se encuentra en el índice especificadp
+      persona1.nombre = persona.nombre;
+      persona1.apellido = persona.apellido;
+    }
 }
 
 //lo que se quiere hacer en la clase 46 es que el logging se va a hacer en personas.service.ts, así que la información que se
