@@ -15,6 +15,7 @@ export class FormularioComponent implements OnInit{
   nombreInput:string = ''; //se habilita en clase 48 para usar two way bidding 
   apellidoInput:string = '';
   index:number;
+  modoEdicion:number; //para query params
   /*
   @ViewChild('nombreInput') nombreInput: ElementRef;  //se importa este decorador, se pone como parámetro el nombre de la referencia nombreInput y se le asigna a una variable tipo ElementRef
   @ViewChild('apellidoInput') apellidoInput: ElementRef; 
@@ -27,7 +28,8 @@ export class FormularioComponent implements OnInit{
   ngOnInit(): void {
       //recuperar índice seleccionado
     this.index = this.route.snapshot.params['id']; //el nombre de id es el mismo de app-routing, ya que se está recuperando esa información 
-    if (this.index){
+    this.modoEdicion = +this.route.snapshot.queryParams['modoEdicion']; //en typeScript al poner '+', combierte a tipo number
+    if (this.modoEdicion != null && this.modoEdicion === 1){ //clase 68, con esto no es necesario preguntar por index sino ppreguntar por modo edición
       //para recuperar el objeto persona del arreglo proporcionando el índice, con el método de la clase personasService y le pasamos el índice, con el objeto persona llenamos los campos del fomulario con input
       let persona : Persona = this.personasService.encontrarPersona(this.index);
       this.nombreInput = persona.nombre;
@@ -37,7 +39,7 @@ export class FormularioComponent implements OnInit{
 
   onGuardarPersona(){ //Clase 43, se eliminan los dos parámetros, clase 66, al editar no duplica
     let persona1 = new Persona(this.nombreInput, this.apellidoInput); 
-    if(this.index){
+    if(this.modoEdicion != null && this.modoEdicion === 1){
       this.personasService.modificarPersona(this.index, persona1);
     }else{
       this.personasService.agregarPersona(persona1);//pasamos el objeto de tipo Persona

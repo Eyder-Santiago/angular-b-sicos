@@ -2,7 +2,10 @@
     <div class="item">  <!--en ngFor, let persona va a almacenar cada uno de los objetos de tipo Persona que contiene el arreglo de Persona, let i persona será el contador-->
       <ul><!--se hará un link por cada uno de los elementos a mostrar con la ruta 'personas/:id' de app-routing y al dar clic se carga el componente formulario para editar ese usuario-->
         <li>
-          <a [routerLink]="['/personas', indice]">
+          <a [routerLink]="['/personas', indice]" 
+          [queryParams]="{modoEdicion:'1'}"
+          >
+            
             {{persona.nombre}} {{persona.apellido}} <!--ver persona.component.ts-->
           </a>
         </li>        
