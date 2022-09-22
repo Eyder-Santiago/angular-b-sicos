@@ -40,6 +40,12 @@ export class PersonasService{
       persona1.nombre = persona.nombre;
       persona1.apellido = persona.apellido;
     }
+
+    eliminarPersona(index : number){
+      this.personas.splice(index,1); //especificamos que se va a eliminar 1 elemento
+
+    }
+
 }
 
 //lo que se quiere hacer en la clase 46 es que el logging se va a hacer en personas.service.ts, así que la información que se
