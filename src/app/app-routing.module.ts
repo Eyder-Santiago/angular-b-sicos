@@ -5,11 +5,14 @@ import { PersonasComponent } from './personas/personas.component';
 
 const routes: Routes = [
   {path: '', component:PersonasComponent}, //cuando estemos en inicio se va a desplegar el componente personas
-  {path: 'personas', component: PersonasComponent},
-  {path: 'personas/agregar', component: FormularioComponent}, //cuando agreguemos personas se va a mostrar el componente de formulario
-  {path: 'personas/:id', component: FormularioComponent}, //nombre parámetro 'id', elque va a procesar el url va a hacer formularioComponent
+  {path: 'personas', component: PersonasComponent, children: [
+    {path: 'agregar', component: FormularioComponent}, 
+    {path: ':id', component: FormularioComponent}, 
+  ]}
+]
+  
 
-];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -8,10 +8,7 @@
     [indice] = "i">
     </app-persona><!--[persona] Pasando elementos a componente hijo persona.component.html-->
   </div>
-  <div class="box">
-    <!--El método que se monitorea es el método personaCreada.emit(persona1), esto es dos líneas abajo-->
-    <app-formulario></app-formulario><!-- Pasando elementos a componente hijo formulario.component.html-->
-  </div>
+<router-outlet></router-outlet> <!--se quitó lo que había antes, para que con esto se muestre las opciones de editar y de agregar persona-->
   
   
   <!--Se movió Componente hijo-->
