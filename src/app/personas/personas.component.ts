@@ -22,12 +22,18 @@ export class PersonasComponent implements OnInit {
   */  
 
       //servicio LoggingServices
-    constructor(private loggingService: LoggingService, 
+    constructor(
       private personasServices: PersonasService,
       private router:Router
     ){}
-  ngOnInit(): void { //clase 45, este método se ejecuta despupes del contructor
-    this.personas = this.personasServices.personas; //valor inicial arreglo vaacío línea 16, después se inicializa el método ngOnInit y se inicializa la variable this.personas con el arreglo definido en PersonasService, this.personas.Service.personas
+  ngOnInit(): void { 
+     this.personasServices.obtenerPersonas()
+     .subscribe(
+      (personas: Persona[]) => {
+        this.personas = personas;
+        this.personasServices.setPersonas(personas);
+      }
+     );
   }
 
   agregar(){

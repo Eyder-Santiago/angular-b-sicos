@@ -6,18 +6,23 @@ import { Persona } from "./persona.model";
 @Injectable() //para utilizar un servicio dentro de otro servicio
 export class PersonasService{
 
-    //se pasará al servicio PersonasService
+    //se pasará al servicio PersonasService, clase 73, esta clase ya no cargará la información inicial, sino que será obtenerPersonas() con dataServices 
     personas: Persona[] = 
-    [
-      new Persona('Juan', 'Perez'), //importamos la clase persona.model. Creamos un arreglo de Personas, con 2 objetos declarados
-      new Persona('Laura', 'Juarez'),
-      new Persona('Karla', 'Lara')
-    ];  
+    [];  
+
+    //actualiza el arreglo una vez sea recuperado de la base de datos
+    setPersonas(personas: Persona[]){
+      this.personas = personas;
+    }
 
     saludar = new EventEmitter<number>(); //Emitiendo la variable Saludar
 
     constructor(private loggingService: LoggingService, private dataServices: DataServices){ //clase 72, inyectamos servicio DataServices
   
+    }
+
+    obtenerPersonas(){
+      return this.dataServices.cargarPersonas(); //regresa un observable, por tal hay que subscribirse, se hará en personas.component.ts
     }
 
       //servicio LoggingServices
@@ -29,8 +34,11 @@ export class PersonasService{
 
     agregarPersona(persona: Persona){ 
       this.loggingService.enviaMensajeAConsola("agregamos al arreglo la nueva persona:" + persona.nombre);
-        this.personas.push(persona);
-        this.dataServices.guardarPersonas(this.personas); //guardar el arreglo en DataServices
+      if(this.personas == null){
+        this.personas = [];
+      }
+      this.personas.push(persona);
+      this.dataServices.guardarPersonas(this.personas); //guardar el arreglo en dataServices
       }
     encontrarPersona(index : number){ //declaramos una variable, y con ayuda cdel arreglo personas, proporcionamos el indice que estamos recibiendo y nos va a regresar el objeto persona que se encuentra agregado en este índice y regresamos el objeto persona que hemos encontrado con el return
       let persona: Persona = this.personas[index];
