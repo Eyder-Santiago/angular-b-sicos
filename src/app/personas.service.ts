@@ -53,8 +53,16 @@ export class PersonasService{
     }
 
     eliminarPersona(index : number){
-      this.personas.splice(index,1); //especificamos que se va a eliminar 1 elemento
+      this.personas.splice(index,1); //especificamos que se va a eliminar 1 elemento del arreglo
+      this.dataServices.eliminarPersona(index); //eliminar el registro de la base de datos
+      //se vuelve a guardar el arreglo en la base de datos para que se regeneren los índices
+      this.modificarPersonas();
+    }
 
+    modificarPersonas(){
+      if(this.personas != null){
+        this.dataServices.guardarPersonas(this.personas);
+      }
     }
 
 }
