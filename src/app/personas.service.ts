@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from "@angular/core";
+import { DataServices } from "./data.services";
 import { LoggingService } from "./loggingService.service";
 import { Persona } from "./persona.model";
 
@@ -15,7 +16,7 @@ export class PersonasService{
 
     saludar = new EventEmitter<number>(); //Emitiendo la variable Saludar
 
-    constructor(private loggingService: LoggingService){
+    constructor(private loggingService: LoggingService, private dataServices: DataServices){ //clase 72, inyectamos servicio DataServices
   
     }
 
@@ -29,6 +30,7 @@ export class PersonasService{
     agregarPersona(persona: Persona){ 
       this.loggingService.enviaMensajeAConsola("agregamos al arreglo la nueva persona:" + persona.nombre);
         this.personas.push(persona);
+        this.dataServices.guardarPersonas(this.personas); //guardar el arreglo en DataServices
       }
     encontrarPersona(index : number){ //declaramos una variable, y con ayuda cdel arreglo personas, proporcionamos el indice que estamos recibiendo y nos va a regresar el objeto persona que se encuentra agregado en este índice y regresamos el objeto persona que hemos encontrado con el return
       let persona: Persona = this.personas[index];

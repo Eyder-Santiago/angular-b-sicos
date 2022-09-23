@@ -10,6 +10,8 @@ import { LoggingService } from './loggingService.service';
 import { PersonasService } from './personas.service';
 import { PersonasComponent } from './personas/personas.component';
 import { ErrorComponent } from './error/error.component';
+import { DataServices } from './data.services';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,10 @@ import { ErrorComponent } from './error/error.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule //agregar luego de poner los scripts de bootstrap
+    FormsModule, //agregar luego de poner los scripts de bootstrap
+    HttpClientModule //clase 72, módulo para data.services.ts
   ],
-  providers: [LoggingService, PersonasService],  //proveedor global
+  providers: [LoggingService, PersonasService, DataServices],  //proveedor global
   bootstrap: [AppComponent]
 })
 export class AppModule { }
