@@ -15,9 +15,10 @@ export class DataServices{
 
     //guardamos el arreglo de personas
     guardarPersonas(personas: Persona[]){
+        const token = this.loginService.getIdToken(); //el token que nos regresó la autenticación
         //tomamos la ruta de al base de datos firebase ||| todas las url deben terminar en '.json', post agrega nuevas peticiones, put modifica la petición existente
         //this.httpClient.post('https://listado-personas-7306e-default-rtdb.firebaseio.com/datos.json', personas)
-        this.httpClient.put('https://listado-personas-7306e-default-rtdb.firebaseio.com/datos.json', personas)
+        this.httpClient.put('https://listado-personas-7306e-default-rtdb.firebaseio.com/datos.json?auth=' + token, personas)
         .subscribe(
             response => console.log("resultado guardar Personas" + response),
             error => console.log("Error al guardar Personas" + error)
@@ -27,8 +28,9 @@ export class DataServices{
     }
 
     modificarPersona(index:number, persona : Persona){ //para agregaar un índice cuando se vaya a hacer una modificación
+        const token = this.loginService.getIdToken(); //el token que nos regresó la autenticación
         let url:string;
-        url = 'https://listado-personas-7306e-default-rtdb.firebaseio.com/datos'+ index +'.json';
+        url = 'https://listado-personas-7306e-default-rtdb.firebaseio.com/datos/'+ index +'.json?auth=' + token;
         this.httpClient.put(url, persona)
         .subscribe(
             response => console.log("resultado modificar Persona:" + response)
@@ -38,8 +40,9 @@ export class DataServices{
     }
 
     eliminarPersona(index:number){
+        const token = this.loginService.getIdToken(); //el token que nos regresó la autenticación
         let url:string;
-        url = 'https://listado-personas-7306e-default-rtdb.firebaseio.com/datos'+ index +'.json';
+        url = 'https://listado-personas-7306e-default-rtdb.firebaseio.com/datos/'+ index +'.json?auth=' + token;
         this.httpClient.delete(url) //solo nos posicionamos en la url, no hay necesidad de pasar objeto
         .subscribe(
             response => console.log("resultado eliminar Persona:" + response)
