@@ -1,19 +1,24 @@
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 
+import { NgModule, InjectionToken } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+ 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+ 
 import { PersonaComponent } from './personas/persona/persona.component';
 import { FormularioComponent } from './personas/formulario/formulario.component';
 import { LoggingService } from './loggingService.service';
 import { PersonasService } from './personas.service';
 import { PersonasComponent } from './personas/personas.component';
-import { ErrorComponent } from './error/error.component';
-import { DataServices } from './data.services';
+import { ErrorComponent } from './error/error.component'; 
 import { HttpClientModule } from '@angular/common/http';
+import { DataServices } from './data.services';
 import { LoginComponent } from './login/login.component';
-
+import { LoginService } from './login/login.service';
+import { BrowserModule } from '@angular/platform-browser';
+//import { LoginGuardian } from './login/login-guardian.service';
+ 
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,10 +31,34 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, //agregar luego de poner los scripts de bootstrap
-    HttpClientModule //clase 72, módulo para data.services.ts
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [LoggingService, PersonasService, DataServices],  //proveedor global
+  providers: [LoggingService, PersonasService, DataServices, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

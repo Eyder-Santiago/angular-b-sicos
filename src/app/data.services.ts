@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core';
+import { LoginService } from './login/login.service';
 import { Persona } from './persona.model';
 
 @Injectable()//se usa porque se va a inyectar un servicio dentro de este servicio
 export class DataServices{
-    constructor(private httpClient:HttpClient){}
+    constructor(private httpClient:HttpClient, private loginService : LoginService){}
 
     cargarPersonas(){
+        const token = this.loginService.getIdToken(); //el token que nos regresó la autenticación
         //se encarga de regresar el arreglo de datos almacenado en la base de datos
-        return this.httpClient.get<Persona[]>('https://listado-personas-7306e-default-rtdb.firebaseio.com/datos.json'); //regresa un objeto de tipo observable, por tal hay que usar subscribe al método para recuperar la infirmación
+        return this.httpClient.get<Persona[]>('https://listado-personas-7306e-default-rtdb.firebaseio.com/datos.json?auth=' + token); //regresa un objeto de tipo observable, por tal hay que usar subscribe al método para recuperar la infirmación
     }
 
     //guardamos el arreglo de personas
