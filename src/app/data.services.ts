@@ -24,5 +24,16 @@ export class DataServices{
 
     }
 
+    modificarPersona(index:number, persona : Persona){ //para agregaar un índice cuando se vaya a hacer una modificación
+        let url:string;
+        url = 'https://listado-personas-7306e-default-rtdb.firebaseio.com/datos'+ index +'.json';
+        this.httpClient.put(url, persona)
+        .subscribe(
+            response => console.log("resultado modificar Persona:" + response)
+        ,   error => console.log("Error en modificar Persona:" + error)
+        
+        )
+    }
+
 
 }

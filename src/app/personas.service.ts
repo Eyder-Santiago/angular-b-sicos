@@ -49,6 +49,7 @@ export class PersonasService{
       let persona1 = this.personas[index]; //regresando el objeto persona que se encuentra en el índice especificadp
       persona1.nombre = persona.nombre;
       persona1.apellido = persona.apellido;
+      this.dataServices.modificarPersona(index, persona);
     }
 
     eliminarPersona(index : number){
