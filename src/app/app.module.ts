@@ -16,6 +16,7 @@ import { DataServices } from './data.services';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { BrowserModule } from '@angular/platform-browser';
+import { LoginGuardian } from './login/login-guardian.service';
 //import { LoginGuardian } from './login/login-guardian.service';
  
  
@@ -34,7 +35,7 @@ import { BrowserModule } from '@angular/platform-browser';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [LoggingService, PersonasService, DataServices, LoginService],
+  providers: [LoggingService, PersonasService, DataServices, LoginService, LoginGuardian],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
